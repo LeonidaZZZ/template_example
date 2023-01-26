@@ -1,0 +1,4 @@
+liquibase:
+  enabled: true
+  change-log: classpath:database_test_changelog.xml
+  default-schema: testSc

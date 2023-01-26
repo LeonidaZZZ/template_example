@@ -1,0 +1,37 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="v_1.0_id_1.1_module_local_task_JIRA-1234_date_23042021.xml" author="author">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="${prefix}_example_foo"/>
+            </not>
+        </preConditions>
+        <createTable tableName="${prefix}_example_foo">
+            <column name="id" type="BIGINT"/>
+            <column name="fist_foo" type="VARCHAR(255)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="${prefix}_example_foo"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="v_1.0_id_1.2_module_local_task_JIRA-1234_date_23042021.xml" author="Batov_Nikolay">
+        <preConditions>
+            <tableExists tableName="${prefix}_example_foo"/>
+            <not>
+                <primaryKeyExists primaryKeyName="${prefix}_example_foo_id_pk"/>
+            </not>
+        </preConditions>
+        <addPrimaryKey tableName="${prefix}_example_foo"
+                       columnNames="id"
+                       constraintName="${prefix}_example_foo_id_pk"/>
+        <rollback>
+            <dropPrimaryKey tableName="${prefix}_example_foo" constraintName="${prefix}_example_foo_id_pk"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="reliase_1.0" author="Batov_Nikolay">
+        <tagDatabase tag="reliase_1.0"/>
+    </changeSet>
+</databaseChangeLog>

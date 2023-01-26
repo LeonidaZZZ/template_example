@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: local
+
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://postgresql:5432/testDb?currentSchema=testSc
+    username: postgres
+    password: postgres
+
+  liquibase:
+    enabled: false
+
+springdoc:
+  api-docs:
+    path: /api-docs
