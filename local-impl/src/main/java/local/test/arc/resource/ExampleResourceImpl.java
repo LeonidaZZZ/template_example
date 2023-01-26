@@ -13,11 +13,6 @@ import local.test.arc.api.resource.ExampleResource;
 import javax.validation.Valid;
 import java.util.UUID;
 
-/**
- * ExampleResourceImpl.
- *
- * @author Nikolay_Batov
- */
 @RestController
 @RequestMapping(UrlConstants.MAIN_URL)
 public class ExampleResourceImpl implements ExampleResource {
